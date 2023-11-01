@@ -13,13 +13,7 @@ public class Employee {
     private String email;
     private String carNumber;
 
-    public Employee(Employee.EmployeeBuilder builder) {
-        this.name = builder.name;
-        this.lastName = builder.lastName;
-        this.position = builder.position;
-        this.phone = builder.phone;
-        this.email = builder.email;
-        this.carNumber = builder.carNumber;
+    public Employee() {
     }
 
     public String getName() {
@@ -118,7 +112,14 @@ public class Employee {
         }
 
         public Employee build() {
-            return new Employee(this);
+            Employee employee = new Employee();
+            employee.setName(name);
+            employee.setLastName(lastName);
+            employee.setPosition(position);
+            employee.setPhone(phone);
+            employee.setEmail(email);
+            employee.setCarNumber(carNumber);
+            return employee;
         }
     }
 }
