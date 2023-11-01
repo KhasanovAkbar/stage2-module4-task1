@@ -15,12 +15,14 @@ public class H2ConnectionFactory implements ConnectionFactory {
     public Connection createConnection() {
         //
         Properties properties = loadConnectionProperties("h2database.properties");
-        String dbUrl = properties.getProperty("db_url");
-        String user = properties.getProperty("user");
-        String password = properties.getProperty("password");
         try {
+            Class.forName(properties.getProperty("jdbc_driver"));
+            String dbUrl = properties.getProperty("db_url");
+            String user = properties.getProperty("user");
+            String password = properties.getProperty("password");
+
             return DriverManager.getConnection(dbUrl, user, password);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
