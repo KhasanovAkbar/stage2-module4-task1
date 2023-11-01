@@ -13,7 +13,7 @@ public class Employee {
     private String email;
     private String carNumber;
 
-    public Employee(EmployeeBuilder builder) {
+    public Employee(Employee.EmployeeBuilder builder) {
         this.name = builder.name;
         this.lastName = builder.lastName;
         this.position = builder.position;
@@ -117,7 +117,7 @@ public class Employee {
             return this;
         }
 
-        public Employee builder() {
+        public Employee build() {
             return new Employee(this);
         }
     }
